@@ -40,7 +40,7 @@ async function main() {
     md = generateV75ResultMarkdown(game, dateStr);
     outName = `v75_result_${dateStr}.md`;
   } else if (mode === "startlist") {
-    md = generateV75StartlistMarkdown(game, dateStr);
+    md = await generateV75StartlistMarkdown(game, dateStr);
     outName = `v75_startlista_${dateStr}.md`;
   } else {
     console.error("Mode måste vara 'result' eller 'startlist'.");
