@@ -6,7 +6,9 @@
     "dev": "next dev --turbopack",
     "build": "next build --turbopack",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "v75:result": "node scripts/generateV75.js result",
+    "v75:startlist": "node scripts/generateV75.js startlist"
   },
   "dependencies": {
     "react": "19.1.0",
