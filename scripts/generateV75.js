@@ -12,7 +12,10 @@ const {
   generateV75ResultMarkdown,
   generateV75StartlistMarkdown,
 } = require("../lib/atg");
-const { generateHybridV75StartlistMarkdown } = require("../lib/hybrid-atg");
+const {
+  generateHybridV75StartlistMarkdown,
+  generateHistoricalDataMarkdown,
+} = require("../lib/hybrid-atg");
 
 async function main() {
   const [mode, dateStr] = process.argv.slice(2);
@@ -38,29 +41,40 @@ async function main() {
   console.log("→ Hämtar spel/omgångens data ...");
   const game = await fetchV75Game(gameId);
 
-  let md, outName;
+  const outDir = path.resolve(process.cwd(), "out");
+  if (!fs.existsSync(outDir)) fs.mkdirSync(outDir);
+
   if (mode === "result") {
-    md = generateV75ResultMarkdown(game, dateStr);
-    outName = `v75_result_${dateStr}.md`;
+    const md = generateV75ResultMarkdown(game, dateStr);
+    const outPath = path.join(outDir, `v75_result_${dateStr}.md`);
+    fs.writeFileSync(outPath, md, "utf8");
+    console.log(`✔ Skrev ${outPath}`);
   } else if (mode === "startlist") {
-    md = await generateHybridV75StartlistMarkdown(game, dateStr);
-    outName = `v75_startlista_${dateStr}.md`;
+    // Skapa startlista (utan hästhistorik)
+    const startlistMd = await generateHybridV75StartlistMarkdown(game, dateStr);
+    const startlistPath = path.join(outDir, `v75_startlista_${dateStr}.md`);
+    fs.writeFileSync(startlistPath, startlistMd, "utf8");
+    console.log(`✔ Skrev ${startlistPath}`);
+
+    // Skapa historisk data (senaste 5 starterna)
+    const historicalMd = await generateHistoricalDataMarkdown(game, dateStr);
+    const historicalPath = path.join(
+      outDir,
+      `v75_historisk_data_${dateStr}.md`
+    );
+    fs.writeFileSync(historicalPath, historicalMd, "utf8");
+    console.log(`✔ Skrev ${historicalPath}`);
   } else if (mode === "startlist-api") {
-    md = await generateV75StartlistMarkdown(game, dateStr);
-    outName = `v75_startlista_api_${dateStr}.md`;
+    const md = await generateV75StartlistMarkdown(game, dateStr);
+    const outPath = path.join(outDir, `v75_startlista_api_${dateStr}.md`);
+    fs.writeFileSync(outPath, md, "utf8");
+    console.log(`✔ Skrev ${outPath}`);
   } else {
     console.error(
       "Mode måste vara 'result', 'startlist' eller 'startlist-api'."
     );
     process.exit(3);
   }
-
-  const outDir = path.resolve(process.cwd(), "out");
-  if (!fs.existsSync(outDir)) fs.mkdirSync(outDir);
-  const outPath = path.join(outDir, outName);
-
-  fs.writeFileSync(outPath, md, "utf8");
-  console.log(`✔ Skrev ${outPath}`);
 }
 
 main().catch((err) => {
