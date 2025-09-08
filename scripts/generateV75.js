@@ -12,11 +12,14 @@ const {
   generateV75ResultMarkdown,
   generateV75StartlistMarkdown,
 } = require("../lib/atg");
+const { generateHybridV75StartlistMarkdown } = require("../lib/hybrid-atg");
 
 async function main() {
   const [mode, dateStr] = process.argv.slice(2);
   if (!mode || !dateStr) {
-    console.error("Usage: node scripts/generateV75.js <result|startlist> <YYYY-MM-DD>");
+    console.error(
+      "Usage: node scripts/generateV75.js <result|startlist> <YYYY-MM-DD>"
+    );
     process.exit(1);
   }
   if (!/^\d{4}-\d{2}-\d{2}$/.test(dateStr)) {
@@ -40,10 +43,15 @@ async function main() {
     md = generateV75ResultMarkdown(game, dateStr);
     outName = `v75_result_${dateStr}.md`;
   } else if (mode === "startlist") {
-    md = await generateV75StartlistMarkdown(game, dateStr);
+    md = await generateHybridV75StartlistMarkdown(game, dateStr);
     outName = `v75_startlista_${dateStr}.md`;
+  } else if (mode === "startlist-api") {
+    md = await generateV75StartlistMarkdown(game, dateStr);
+    outName = `v75_startlista_api_${dateStr}.md`;
   } else {
-    console.error("Mode måste vara 'result' eller 'startlist'.");
+    console.error(
+      "Mode måste vara 'result', 'startlist' eller 'startlist-api'."
+    );
     process.exit(3);
   }
 
@@ -55,7 +63,7 @@ async function main() {
   console.log(`✔ Skrev ${outPath}`);
 }
 
-main().catch(err => {
+main().catch((err) => {
   console.error("Fel:", err.message || err);
   process.exit(10);
 });

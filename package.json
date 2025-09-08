@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "eslint",
     "v75:result": "node scripts/generateV75.js result",
-    "v75:startlist": "node scripts/generateV75.js startlist"
+    "v75:startlist": "node scripts/generateV75.js startlist",
+    "v75:startlist-api": "node scripts/generateV75.js startlist-api"
   },
   "dependencies": {
     "next": "15.5.2",
