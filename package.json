@@ -4,7 +4,9 @@
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
+    "dev:stable": "next dev",
     "build": "next build --turbopack",
+    "build:stable": "next build",
     "start": "next start",
     "lint": "eslint",
     "v75:result": "node scripts/generateV75.js result",
