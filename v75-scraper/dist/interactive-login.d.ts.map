@@ -1,0 +1,1 @@
+{"version":3,"file":"interactive-login.d.ts","sourceRoot":"","sources":["../src/interactive-login.ts"],"names":[],"mappings":"AAEA,UAAU,YAAY;IACpB,OAAO,EAAE,OAAO,CAAC;IACjB,OAAO,EAAE,MAAM,CAAC;IAChB,SAAS,EAAE,MAAM,CAAC;IAClB,KAAK,EAAE,MAAM,EAAE,CAAC;IAChB,KAAK,CAAC,EAAE,MAAM,CAAC;CAChB;AAED,wBAAsB,uBAAuB,IAAI,OAAO,CAAC,YAAY,CAAC,CA4IrE;AAGD,OAAO,EAAE,YAAY,EAAE,CAAC"}

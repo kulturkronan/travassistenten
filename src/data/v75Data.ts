@@ -13,6 +13,7 @@ export interface Horse {
   shoes: string;
   wagon: string;
   tips?: string;
+  scratched?: boolean; // Ny egenskap för strukna hästar
 }
 
 export interface V75Race {
@@ -37,10 +38,10 @@ export const v75Data: V75Race[] = [
         track: 1,
         record: "1.14,1",
         prizeMoney: 293500,
-        v75Percent: 20.1,
+        v75Percent: 20.0,
         trendPercent: 0.3,
         vOdds: 5.17,
-        pOdds: 5.94,
+        pOdds: 5.96,
         shoes: "¢C",
         wagon: "VA",
       },
@@ -99,6 +100,7 @@ export const v75Data: V75Race[] = [
         pOdds: 5.94,
         shoes: "¢¢",
         wagon: "VA",
+        scratched: true, // Denna är faktiskt struken enligt ATG
       },
       {
         number: 6,
@@ -121,10 +123,10 @@ export const v75Data: V75Race[] = [
         track: 7,
         record: "1.14,2",
         prizeMoney: 362500,
-        v75Percent: 27.3,
+        v75Percent: 26.0,
         trendPercent: 0.6,
-        vOdds: 3.12,
-        pOdds: 5.94,
+        vOdds: 3.87,
+        pOdds: 5.96,
         shoes: "¢¢",
         wagon: "VA",
       },
@@ -225,6 +227,7 @@ export const v75Data: V75Race[] = [
         pOdds: 5.94,
         shoes: "¢¢",
         wagon: "VA",
+        scratched: true, // Denna är faktiskt struken enligt ATG
       },
       {
         number: 15,
@@ -289,6 +292,7 @@ export const v75Data: V75Race[] = [
         pOdds: 2.66,
         shoes: "CC",
         wagon: "VA",
+        scratched: false,
       },
       {
         number: 4,
@@ -303,6 +307,7 @@ export const v75Data: V75Race[] = [
         pOdds: 2.66,
         shoes: "CC",
         wagon: "VA",
+        scratched: false,
       },
       {
         number: 5,
@@ -480,6 +485,7 @@ export const v75Data: V75Race[] = [
         pOdds: 2.66,
         shoes: "¢¢",
         wagon: "AM",
+        scratched: false,
       },
       {
         number: 3,

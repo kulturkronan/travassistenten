@@ -25,27 +25,27 @@ export declare const HorseData: z.ZodObject<{
         cart: z.ZodString;
         comment: z.ZodOptional<z.ZodString>;
     }, "strip", z.ZodTypeAny, {
-        driver: string;
+        time: string;
+        track: string;
+        date: string;
         odds: string;
+        driver: string;
         shoes: string;
         cart: string;
-        date: string;
-        track: string;
         position: string;
         distance: string;
-        time: string;
         prize: string;
         comment?: string | undefined;
     }, {
-        driver: string;
+        time: string;
+        track: string;
+        date: string;
         odds: string;
+        driver: string;
         shoes: string;
         cart: string;
-        date: string;
-        track: string;
         position: string;
         distance: string;
-        time: string;
         prize: string;
         comment?: string | undefined;
     }>, "many">>;
@@ -55,22 +55,22 @@ export declare const HorseData: z.ZodObject<{
     name: string;
     driver: string;
     trainer: string;
+    odds?: string | undefined;
     v75Percent?: string | undefined;
     trend?: string | undefined;
-    odds?: string | undefined;
     shoes?: "cc" | "c̶c" | "cc̶" | "c̶c̶" | undefined;
     tipComment?: string | undefined;
     cart?: string | undefined;
     recentRaces?: {
-        driver: string;
+        time: string;
+        track: string;
+        date: string;
         odds: string;
+        driver: string;
         shoes: string;
         cart: string;
-        date: string;
-        track: string;
         position: string;
         distance: string;
-        time: string;
         prize: string;
         comment?: string | undefined;
     }[] | undefined;
@@ -80,22 +80,22 @@ export declare const HorseData: z.ZodObject<{
     name: string;
     driver: string;
     trainer: string;
+    odds?: string | undefined;
     v75Percent?: string | undefined;
     trend?: string | undefined;
-    odds?: string | undefined;
     shoes?: "cc" | "c̶c" | "cc̶" | "c̶c̶" | undefined;
     tipComment?: string | undefined;
     cart?: string | undefined;
     recentRaces?: {
-        driver: string;
+        time: string;
+        track: string;
+        date: string;
         odds: string;
+        driver: string;
         shoes: string;
         cart: string;
-        date: string;
-        track: string;
         position: string;
         distance: string;
-        time: string;
         prize: string;
         comment?: string | undefined;
     }[] | undefined;
@@ -128,27 +128,27 @@ export declare const DivisionData: z.ZodObject<{
             cart: z.ZodString;
             comment: z.ZodOptional<z.ZodString>;
         }, "strip", z.ZodTypeAny, {
-            driver: string;
+            time: string;
+            track: string;
+            date: string;
             odds: string;
+            driver: string;
             shoes: string;
             cart: string;
-            date: string;
-            track: string;
             position: string;
             distance: string;
-            time: string;
             prize: string;
             comment?: string | undefined;
         }, {
-            driver: string;
+            time: string;
+            track: string;
+            date: string;
             odds: string;
+            driver: string;
             shoes: string;
             cart: string;
-            date: string;
-            track: string;
             position: string;
             distance: string;
-            time: string;
             prize: string;
             comment?: string | undefined;
         }>, "many">>;
@@ -158,22 +158,22 @@ export declare const DivisionData: z.ZodObject<{
         name: string;
         driver: string;
         trainer: string;
+        odds?: string | undefined;
         v75Percent?: string | undefined;
         trend?: string | undefined;
-        odds?: string | undefined;
         shoes?: "cc" | "c̶c" | "cc̶" | "c̶c̶" | undefined;
         tipComment?: string | undefined;
         cart?: string | undefined;
         recentRaces?: {
-            driver: string;
+            time: string;
+            track: string;
+            date: string;
             odds: string;
+            driver: string;
             shoes: string;
             cart: string;
-            date: string;
-            track: string;
             position: string;
             distance: string;
-            time: string;
             prize: string;
             comment?: string | undefined;
         }[] | undefined;
@@ -183,22 +183,22 @@ export declare const DivisionData: z.ZodObject<{
         name: string;
         driver: string;
         trainer: string;
+        odds?: string | undefined;
         v75Percent?: string | undefined;
         trend?: string | undefined;
-        odds?: string | undefined;
         shoes?: "cc" | "c̶c" | "cc̶" | "c̶c̶" | undefined;
         tipComment?: string | undefined;
         cart?: string | undefined;
         recentRaces?: {
-            driver: string;
+            time: string;
+            track: string;
+            date: string;
             odds: string;
+            driver: string;
             shoes: string;
             cart: string;
-            date: string;
-            track: string;
             position: string;
             distance: string;
-            time: string;
             prize: string;
             comment?: string | undefined;
         }[] | undefined;
@@ -215,9 +215,9 @@ export declare const DivisionData: z.ZodObject<{
         conditions: z.ZodOptional<z.ZodString>;
         comment: z.ZodOptional<z.ZodString>;
     }, "strip", z.ZodTypeAny, {
+        time?: string | undefined;
         track?: string | undefined;
         distance?: string | undefined;
-        time?: string | undefined;
         comment?: string | undefined;
         startType?: string | undefined;
         raceName?: string | undefined;
@@ -225,9 +225,9 @@ export declare const DivisionData: z.ZodObject<{
         prizeMoney?: string | undefined;
         conditions?: string | undefined;
     }, {
+        time?: string | undefined;
         track?: string | undefined;
         distance?: string | undefined;
-        time?: string | undefined;
         comment?: string | undefined;
         startType?: string | undefined;
         raceName?: string | undefined;
@@ -258,11 +258,11 @@ export declare const DivisionData: z.ZodObject<{
             tip?: string | undefined;
         }>, "many">>;
     }, "strip", z.ZodTypeAny, {
+        source?: string | undefined;
         rankA?: string[] | undefined;
         rankB?: string[] | undefined;
         rankC?: string[] | undefined;
         paceAnalysis?: string | undefined;
-        source?: string | undefined;
         detailedTips?: {
             description: string;
             horseNumber: string;
@@ -270,11 +270,11 @@ export declare const DivisionData: z.ZodObject<{
             tip?: string | undefined;
         }[] | undefined;
     }, {
+        source?: string | undefined;
         rankA?: string[] | undefined;
         rankB?: string[] | undefined;
         rankC?: string[] | undefined;
         paceAnalysis?: string | undefined;
-        source?: string | undefined;
         detailedTips?: {
             description: string;
             horseNumber: string;
@@ -289,31 +289,31 @@ export declare const DivisionData: z.ZodObject<{
         name: string;
         driver: string;
         trainer: string;
+        odds?: string | undefined;
         v75Percent?: string | undefined;
         trend?: string | undefined;
-        odds?: string | undefined;
         shoes?: "cc" | "c̶c" | "cc̶" | "c̶c̶" | undefined;
         tipComment?: string | undefined;
         cart?: string | undefined;
         recentRaces?: {
-            driver: string;
+            time: string;
+            track: string;
+            date: string;
             odds: string;
+            driver: string;
             shoes: string;
             cart: string;
-            date: string;
-            track: string;
             position: string;
             distance: string;
-            time: string;
             prize: string;
             comment?: string | undefined;
         }[] | undefined;
         raceComment?: string | undefined;
     }[];
     raceInfo?: {
+        time?: string | undefined;
         track?: string | undefined;
         distance?: string | undefined;
-        time?: string | undefined;
         comment?: string | undefined;
         startType?: string | undefined;
         raceName?: string | undefined;
@@ -322,11 +322,11 @@ export declare const DivisionData: z.ZodObject<{
         conditions?: string | undefined;
     } | undefined;
     speltips?: {
+        source?: string | undefined;
         rankA?: string[] | undefined;
         rankB?: string[] | undefined;
         rankC?: string[] | undefined;
         paceAnalysis?: string | undefined;
-        source?: string | undefined;
         detailedTips?: {
             description: string;
             horseNumber: string;
@@ -341,31 +341,31 @@ export declare const DivisionData: z.ZodObject<{
         name: string;
         driver: string;
         trainer: string;
+        odds?: string | undefined;
         v75Percent?: string | undefined;
         trend?: string | undefined;
-        odds?: string | undefined;
         shoes?: "cc" | "c̶c" | "cc̶" | "c̶c̶" | undefined;
         tipComment?: string | undefined;
         cart?: string | undefined;
         recentRaces?: {
-            driver: string;
+            time: string;
+            track: string;
+            date: string;
             odds: string;
+            driver: string;
             shoes: string;
             cart: string;
-            date: string;
-            track: string;
             position: string;
             distance: string;
-            time: string;
             prize: string;
             comment?: string | undefined;
         }[] | undefined;
         raceComment?: string | undefined;
     }[];
     raceInfo?: {
+        time?: string | undefined;
         track?: string | undefined;
         distance?: string | undefined;
-        time?: string | undefined;
         comment?: string | undefined;
         startType?: string | undefined;
         raceName?: string | undefined;
@@ -374,11 +374,11 @@ export declare const DivisionData: z.ZodObject<{
         conditions?: string | undefined;
     } | undefined;
     speltips?: {
+        source?: string | undefined;
         rankA?: string[] | undefined;
         rankB?: string[] | undefined;
         rankC?: string[] | undefined;
         paceAnalysis?: string | undefined;
-        source?: string | undefined;
         detailedTips?: {
             description: string;
             horseNumber: string;
@@ -417,27 +417,27 @@ export declare const V75Data: z.ZodObject<{
                 cart: z.ZodString;
                 comment: z.ZodOptional<z.ZodString>;
             }, "strip", z.ZodTypeAny, {
-                driver: string;
+                time: string;
+                track: string;
+                date: string;
                 odds: string;
+                driver: string;
                 shoes: string;
                 cart: string;
-                date: string;
-                track: string;
                 position: string;
                 distance: string;
-                time: string;
                 prize: string;
                 comment?: string | undefined;
             }, {
-                driver: string;
+                time: string;
+                track: string;
+                date: string;
                 odds: string;
+                driver: string;
                 shoes: string;
                 cart: string;
-                date: string;
-                track: string;
                 position: string;
                 distance: string;
-                time: string;
                 prize: string;
                 comment?: string | undefined;
             }>, "many">>;
@@ -447,22 +447,22 @@ export declare const V75Data: z.ZodObject<{
             name: string;
             driver: string;
             trainer: string;
+            odds?: string | undefined;
             v75Percent?: string | undefined;
             trend?: string | undefined;
-            odds?: string | undefined;
             shoes?: "cc" | "c̶c" | "cc̶" | "c̶c̶" | undefined;
             tipComment?: string | undefined;
             cart?: string | undefined;
             recentRaces?: {
-                driver: string;
+                time: string;
+                track: string;
+                date: string;
                 odds: string;
+                driver: string;
                 shoes: string;
                 cart: string;
-                date: string;
-                track: string;
                 position: string;
                 distance: string;
-                time: string;
                 prize: string;
                 comment?: string | undefined;
             }[] | undefined;
@@ -472,22 +472,22 @@ export declare const V75Data: z.ZodObject<{
             name: string;
             driver: string;
             trainer: string;
+            odds?: string | undefined;
             v75Percent?: string | undefined;
             trend?: string | undefined;
-            odds?: string | undefined;
             shoes?: "cc" | "c̶c" | "cc̶" | "c̶c̶" | undefined;
             tipComment?: string | undefined;
             cart?: string | undefined;
             recentRaces?: {
-                driver: string;
+                time: string;
+                track: string;
+                date: string;
                 odds: string;
+                driver: string;
                 shoes: string;
                 cart: string;
-                date: string;
-                track: string;
                 position: string;
                 distance: string;
-                time: string;
                 prize: string;
                 comment?: string | undefined;
             }[] | undefined;
@@ -504,9 +504,9 @@ export declare const V75Data: z.ZodObject<{
             conditions: z.ZodOptional<z.ZodString>;
             comment: z.ZodOptional<z.ZodString>;
         }, "strip", z.ZodTypeAny, {
+            time?: string | undefined;
             track?: string | undefined;
             distance?: string | undefined;
-            time?: string | undefined;
             comment?: string | undefined;
             startType?: string | undefined;
             raceName?: string | undefined;
@@ -514,9 +514,9 @@ export declare const V75Data: z.ZodObject<{
             prizeMoney?: string | undefined;
             conditions?: string | undefined;
         }, {
+            time?: string | undefined;
             track?: string | undefined;
             distance?: string | undefined;
-            time?: string | undefined;
             comment?: string | undefined;
             startType?: string | undefined;
             raceName?: string | undefined;
@@ -547,11 +547,11 @@ export declare const V75Data: z.ZodObject<{
                 tip?: string | undefined;
             }>, "many">>;
         }, "strip", z.ZodTypeAny, {
+            source?: string | undefined;
             rankA?: string[] | undefined;
             rankB?: string[] | undefined;
             rankC?: string[] | undefined;
             paceAnalysis?: string | undefined;
-            source?: string | undefined;
             detailedTips?: {
                 description: string;
                 horseNumber: string;
@@ -559,11 +559,11 @@ export declare const V75Data: z.ZodObject<{
                 tip?: string | undefined;
             }[] | undefined;
         }, {
+            source?: string | undefined;
             rankA?: string[] | undefined;
             rankB?: string[] | undefined;
             rankC?: string[] | undefined;
             paceAnalysis?: string | undefined;
-            source?: string | undefined;
             detailedTips?: {
                 description: string;
                 horseNumber: string;
@@ -578,31 +578,31 @@ export declare const V75Data: z.ZodObject<{
             name: string;
             driver: string;
             trainer: string;
+            odds?: string | undefined;
             v75Percent?: string | undefined;
             trend?: string | undefined;
-            odds?: string | undefined;
             shoes?: "cc" | "c̶c" | "cc̶" | "c̶c̶" | undefined;
             tipComment?: string | undefined;
             cart?: string | undefined;
             recentRaces?: {
-                driver: string;
+                time: string;
+                track: string;
+                date: string;
                 odds: string;
+                driver: string;
                 shoes: string;
                 cart: string;
-                date: string;
-                track: string;
                 position: string;
                 distance: string;
-                time: string;
                 prize: string;
                 comment?: string | undefined;
             }[] | undefined;
             raceComment?: string | undefined;
         }[];
         raceInfo?: {
+            time?: string | undefined;
             track?: string | undefined;
             distance?: string | undefined;
-            time?: string | undefined;
             comment?: string | undefined;
             startType?: string | undefined;
             raceName?: string | undefined;
@@ -611,11 +611,11 @@ export declare const V75Data: z.ZodObject<{
             conditions?: string | undefined;
         } | undefined;
         speltips?: {
+            source?: string | undefined;
             rankA?: string[] | undefined;
             rankB?: string[] | undefined;
             rankC?: string[] | undefined;
             paceAnalysis?: string | undefined;
-            source?: string | undefined;
             detailedTips?: {
                 description: string;
                 horseNumber: string;
@@ -630,31 +630,31 @@ export declare const V75Data: z.ZodObject<{
             name: string;
             driver: string;
             trainer: string;
+            odds?: string | undefined;
             v75Percent?: string | undefined;
             trend?: string | undefined;
-            odds?: string | undefined;
             shoes?: "cc" | "c̶c" | "cc̶" | "c̶c̶" | undefined;
             tipComment?: string | undefined;
             cart?: string | undefined;
             recentRaces?: {
-                driver: string;
+                time: string;
+                track: string;
+                date: string;
                 odds: string;
+                driver: string;
                 shoes: string;
                 cart: string;
-                date: string;
-                track: string;
                 position: string;
                 distance: string;
-                time: string;
                 prize: string;
                 comment?: string | undefined;
             }[] | undefined;
             raceComment?: string | undefined;
         }[];
         raceInfo?: {
+            time?: string | undefined;
             track?: string | undefined;
             distance?: string | undefined;
-            time?: string | undefined;
             comment?: string | undefined;
             startType?: string | undefined;
             raceName?: string | undefined;
@@ -663,11 +663,11 @@ export declare const V75Data: z.ZodObject<{
             conditions?: string | undefined;
         } | undefined;
         speltips?: {
+            source?: string | undefined;
             rankA?: string[] | undefined;
             rankB?: string[] | undefined;
             rankC?: string[] | undefined;
             paceAnalysis?: string | undefined;
-            source?: string | undefined;
             detailedTips?: {
                 description: string;
                 horseNumber: string;
@@ -677,8 +677,8 @@ export declare const V75Data: z.ZodObject<{
         } | undefined;
     }>, "many">;
 }, "strip", z.ZodTypeAny, {
-    date: string;
     track: string;
+    date: string;
     divisions: {
         divisionNumber: number;
         horses: {
@@ -686,31 +686,31 @@ export declare const V75Data: z.ZodObject<{
             name: string;
             driver: string;
             trainer: string;
+            odds?: string | undefined;
             v75Percent?: string | undefined;
             trend?: string | undefined;
-            odds?: string | undefined;
             shoes?: "cc" | "c̶c" | "cc̶" | "c̶c̶" | undefined;
             tipComment?: string | undefined;
             cart?: string | undefined;
             recentRaces?: {
-                driver: string;
+                time: string;
+                track: string;
+                date: string;
                 odds: string;
+                driver: string;
                 shoes: string;
                 cart: string;
-                date: string;
-                track: string;
                 position: string;
                 distance: string;
-                time: string;
                 prize: string;
                 comment?: string | undefined;
             }[] | undefined;
             raceComment?: string | undefined;
         }[];
         raceInfo?: {
+            time?: string | undefined;
             track?: string | undefined;
             distance?: string | undefined;
-            time?: string | undefined;
             comment?: string | undefined;
             startType?: string | undefined;
             raceName?: string | undefined;
@@ -719,11 +719,11 @@ export declare const V75Data: z.ZodObject<{
             conditions?: string | undefined;
         } | undefined;
         speltips?: {
+            source?: string | undefined;
             rankA?: string[] | undefined;
             rankB?: string[] | undefined;
             rankC?: string[] | undefined;
             paceAnalysis?: string | undefined;
-            source?: string | undefined;
             detailedTips?: {
                 description: string;
                 horseNumber: string;
@@ -733,8 +733,8 @@ export declare const V75Data: z.ZodObject<{
         } | undefined;
     }[];
 }, {
-    date: string;
     track: string;
+    date: string;
     divisions: {
         divisionNumber: number;
         horses: {
@@ -742,31 +742,31 @@ export declare const V75Data: z.ZodObject<{
             name: string;
             driver: string;
             trainer: string;
+            odds?: string | undefined;
             v75Percent?: string | undefined;
             trend?: string | undefined;
-            odds?: string | undefined;
             shoes?: "cc" | "c̶c" | "cc̶" | "c̶c̶" | undefined;
             tipComment?: string | undefined;
             cart?: string | undefined;
             recentRaces?: {
-                driver: string;
+                time: string;
+                track: string;
+                date: string;
                 odds: string;
+                driver: string;
                 shoes: string;
                 cart: string;
-                date: string;
-                track: string;
                 position: string;
                 distance: string;
-                time: string;
                 prize: string;
                 comment?: string | undefined;
             }[] | undefined;
             raceComment?: string | undefined;
         }[];
         raceInfo?: {
+            time?: string | undefined;
             track?: string | undefined;
             distance?: string | undefined;
-            time?: string | undefined;
             comment?: string | undefined;
             startType?: string | undefined;
             raceName?: string | undefined;
@@ -775,11 +775,11 @@ export declare const V75Data: z.ZodObject<{
             conditions?: string | undefined;
         } | undefined;
         speltips?: {
+            source?: string | undefined;
             rankA?: string[] | undefined;
             rankB?: string[] | undefined;
             rankC?: string[] | undefined;
             paceAnalysis?: string | undefined;
-            source?: string | undefined;
             detailedTips?: {
                 description: string;
                 horseNumber: string;
@@ -795,12 +795,12 @@ export declare const CliArgs: z.ZodObject<{
     track: z.ZodString;
     bane: z.ZodOptional<z.ZodString>;
 }, "strip", z.ZodTypeAny, {
-    date: string;
     track: string;
+    date: string;
     bane?: string | undefined;
 }, {
-    date: string;
     track: string;
+    date: string;
     bane?: string | undefined;
 }>;
 export type CliArgs = z.infer<typeof CliArgs>;

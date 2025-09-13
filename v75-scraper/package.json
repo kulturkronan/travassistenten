@@ -8,6 +8,9 @@
     "build": "tsc",
     "start": "node dist/fetch.js",
     "dev": "tsx src/fetch.ts",
+    "fetch-v75": "tsx src/fetch-v75-data.ts",
+    "scrape-real": "tsx src/real-atg-scraper.ts",
+    "extract-real-data": "tsx src/extract-real-data.ts",
     "install-playwright": "pnpm dlx playwright install chromium"
   },
   "dependencies": {

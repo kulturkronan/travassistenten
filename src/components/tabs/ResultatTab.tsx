@@ -3,6 +3,8 @@
 import { useState } from "react";
 import ExportButton from "../ExportButton";
 import DataEvaluation from "../DataEvaluation";
+import SyncButton from "../SyncButton";
+import SortableTable from "../SortableTable";
 
 export default function ResultatTab() {
   const [isLoading, setIsLoading] = useState(false);
@@ -136,6 +138,12 @@ export default function ResultatTab() {
     setIsLoading(false);
   };
 
+  const handleSync = async () => {
+    // Simulate sync with external data source
+    await new Promise((resolve) => setTimeout(resolve, 2200));
+    setLastUpdated(new Date());
+  };
+
   return (
     <div className="space-y-6">
       {/* Header with actions */}
@@ -204,6 +212,8 @@ export default function ResultatTab() {
               )}
             </button>
 
+            <SyncButton onSync={handleSync} lastSynced={lastUpdated} />
+
             {results && (
               <ExportButton
                 data={results}
@@ -251,9 +261,9 @@ export default function ResultatTab() {
           </div>
 
           {/* Race results */}
-          {results.races.map((race: any) => (
+          {results.races.map((race: any, index: number) => (
             <div
-              key={race.raceNumber}
+              key={`result-${race.raceNumber}-${index}`}
               className="bg-white rounded-lg shadow-sm border border-gray-200 p-6"
             >
               <div className="flex items-center justify-between mb-4">
@@ -272,70 +282,58 @@ export default function ResultatTab() {
                 </div>
               </div>
 
-              <div className="overflow-x-auto">
-                <table className="w-full text-sm">
-                  <thead>
-                    <tr className="bg-gray-50">
-                      <th className="px-3 py-2 text-center font-semibold">
-                        Plac
-                      </th>
-                      <th className="px-3 py-2 text-left font-semibold">
-                        Häst/Kusk
-                      </th>
-                      <th className="px-3 py-2 text-center font-semibold">
-                        Tid
-                      </th>
-                      <th className="px-3 py-2 text-center font-semibold">
-                        Odds
-                      </th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {race.fullResults.map((result: any, index: number) => (
-                      <tr
-                        key={index}
-                        className={`border-b ${
-                          result.position === 1
-                            ? "bg-green-50"
-                            : result.position <= 3
-                            ? "bg-yellow-50"
-                            : ""
+              <SortableTable
+                data={race.fullResults}
+                columns={[
+                  {
+                    key: "position",
+                    label: "Plac",
+                    sortable: true,
+                    className: "text-center",
+                    render: (value: number) => (
+                      <span
+                        className={`px-2 py-1 rounded-full text-xs font-medium ${
+                          value === 1
+                            ? "bg-green-100 text-green-800"
+                            : value <= 3
+                            ? "bg-yellow-100 text-yellow-800"
+                            : "bg-gray-100 text-gray-800"
                         }`}
                       >
-                        <td className="px-3 py-2 text-center">
-                          <span
-                            className={`px-2 py-1 rounded-full text-xs font-medium ${
-                              result.position === 1
-                                ? "bg-green-100 text-green-800"
-                                : result.position <= 3
-                                ? "bg-yellow-100 text-yellow-800"
-                                : "bg-gray-100 text-gray-800"
-                            }`}
-                          >
-                            {result.position}
-                          </span>
-                        </td>
-                        <td className="px-3 py-2">
-                          <div>
-                            <div className="font-medium">
-                              #{result.number} {result.name}
-                            </div>
-                            <div className="text-gray-600 text-xs">
-                              {result.driver}
-                            </div>
-                          </div>
-                        </td>
-                        <td className="px-3 py-2 text-center font-mono">
-                          {result.time}
-                        </td>
-                        <td className="px-3 py-2 text-center font-medium">
-                          {result.odds}
-                        </td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
+                        {value}
+                      </span>
+                    ),
+                  },
+                  {
+                    key: "name",
+                    label: "Häst/Kusk",
+                    sortable: true,
+                    render: (value: string, row: any) => (
+                      <div>
+                        <div className="font-medium">
+                          #{row.number} {value}
+                        </div>
+                        <div className="text-gray-600 text-xs">
+                          {row.driver}
+                        </div>
+                      </div>
+                    ),
+                  },
+                  {
+                    key: "time",
+                    label: "Tid",
+                    sortable: true,
+                    className: "text-center font-mono",
+                  },
+                  {
+                    key: "odds",
+                    label: "Odds",
+                    sortable: true,
+                    className: "text-center font-medium",
+                  },
+                ]}
+                defaultSort={{ key: "position", direction: "asc" }}
+              />
             </div>
           ))}
         </div>

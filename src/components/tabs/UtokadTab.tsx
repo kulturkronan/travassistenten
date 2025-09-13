@@ -3,6 +3,8 @@
 import { useState } from "react";
 import ExportButton from "../ExportButton";
 import DataEvaluation from "../DataEvaluation";
+import SyncButton from "../SyncButton";
+import SortableTable from "../SortableTable";
 
 export default function UtokadTab() {
   const [isLoading, setIsLoading] = useState(false);
@@ -70,6 +72,12 @@ export default function UtokadTab() {
     setHistoricalData(mockData);
     setLastUpdated(new Date());
     setIsLoading(false);
+  };
+
+  const handleSync = async () => {
+    // Simulate sync with external data source
+    await new Promise((resolve) => setTimeout(resolve, 2500));
+    setLastUpdated(new Date());
   };
 
   return (
@@ -140,6 +148,8 @@ export default function UtokadTab() {
               )}
             </button>
 
+            <SyncButton onSync={handleSync} lastSynced={lastUpdated} />
+
             {historicalData && (
               <ExportButton
                 data={historicalData}
@@ -157,9 +167,9 @@ export default function UtokadTab() {
       {/* Historical data display */}
       {historicalData ? (
         <div className="space-y-6">
-          {historicalData.races.map((race: any) => (
+          {historicalData.races.map((race: any, index: number) => (
             <div
-              key={race.raceNumber}
+              key={`historical-${race.raceNumber}-${index}`}
               className="bg-white rounded-lg shadow-sm border border-gray-200 p-6"
             >
               <h3 className="text-xl font-semibold text-gray-800 mb-4">
@@ -176,59 +186,52 @@ export default function UtokadTab() {
                       {horse.name}
                     </h4>
 
-                    <div className="overflow-x-auto">
-                      <table className="w-full text-sm">
-                        <thead>
-                          <tr className="bg-gray-50">
-                            <th className="px-3 py-2 text-left font-semibold">
-                              Datum
-                            </th>
-                            <th className="px-3 py-2 text-left font-semibold">
-                              Bana
-                            </th>
-                            <th className="px-3 py-2 text-center font-semibold">
-                              Placering
-                            </th>
-                            <th className="px-3 py-2 text-center font-semibold">
-                              Tid
-                            </th>
-                            <th className="px-3 py-2 text-left font-semibold">
-                              Kusk
-                            </th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          {horse.historicalRaces.map(
-                            (race: any, raceIndex: number) => (
-                              <tr
-                                key={raceIndex}
-                                className="border-b hover:bg-gray-50"
-                              >
-                                <td className="px-3 py-2">{race.date}</td>
-                                <td className="px-3 py-2">{race.track}</td>
-                                <td className="px-3 py-2 text-center">
-                                  <span
-                                    className={`px-2 py-1 rounded-full text-xs font-medium ${
-                                      race.position === 1
-                                        ? "bg-yellow-100 text-yellow-800"
-                                        : race.position <= 3
-                                        ? "bg-green-100 text-green-800"
-                                        : "bg-gray-100 text-gray-800"
-                                    }`}
-                                  >
-                                    {race.position}
-                                  </span>
-                                </td>
-                                <td className="px-3 py-2 text-center font-mono">
-                                  {race.time}
-                                </td>
-                                <td className="px-3 py-2">{race.driver}</td>
-                              </tr>
-                            )
-                          )}
-                        </tbody>
-                      </table>
-                    </div>
+                    <SortableTable
+                      data={horse.historicalRaces}
+                      columns={[
+                        {
+                          key: "date",
+                          label: "Datum",
+                          sortable: true,
+                        },
+                        {
+                          key: "track",
+                          label: "Bana",
+                          sortable: true,
+                        },
+                        {
+                          key: "position",
+                          label: "Placering",
+                          sortable: true,
+                          className: "text-center",
+                          render: (value: number) => (
+                            <span
+                              className={`px-2 py-1 rounded-full text-xs font-medium ${
+                                value === 1
+                                  ? "bg-yellow-100 text-yellow-800"
+                                  : value <= 3
+                                  ? "bg-green-100 text-green-800"
+                                  : "bg-gray-100 text-gray-800"
+                              }`}
+                            >
+                              {value}
+                            </span>
+                          ),
+                        },
+                        {
+                          key: "time",
+                          label: "Tid",
+                          sortable: true,
+                          className: "text-center font-mono",
+                        },
+                        {
+                          key: "driver",
+                          label: "Kusk",
+                          sortable: true,
+                        },
+                      ]}
+                      defaultSort={{ key: "date", direction: "desc" }}
+                    />
                   </div>
                 ))}
               </div>

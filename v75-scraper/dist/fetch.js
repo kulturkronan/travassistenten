@@ -30,6 +30,32 @@ class V75Scraper {
         }
     }
     /**
+     * Loggar in på ATG med användarnamn och lösenord
+     */
+    async loginToATG(page) {
+        try {
+            console.log("Försöker logga in på ATG...");
+            // Gå till inloggningssidan
+            await page.goto("https://www.atg.se/logga-in", {
+                waitUntil: "networkidle",
+            });
+            // Vänta på inloggningsformuläret
+            await page.waitForSelector('input[name="username"], input[type="email"], input[placeholder*="användarnamn"]', { timeout: 10000 });
+            // Fyll i användarnamn
+            await page.fill('input[name="username"], input[type="email"], input[placeholder*="användarnamn"]', "jesSjo680");
+            // Fyll i lösenord
+            await page.fill('input[name="password"], input[type="password"]', "Jeppe1599");
+            // Klicka på inloggningsknappen
+            await page.click('button[type="submit"], button:has-text("Logga in"), input[type="submit"]');
+            // Vänta på att inloggningen ska slutföras
+            await page.waitForTimeout(3000);
+            console.log("Inloggning slutförd");
+        }
+        catch (error) {
+            console.log("Kunde inte logga in, fortsätter utan inloggning:", error);
+        }
+    }
+    /**
      * Hanterar cookies-rutan om den visas
      */
     async handleCookieConsent(page) {
@@ -245,6 +271,8 @@ class V75Scraper {
                 "User-Agent": this.config.userAgent,
             });
             await page.setViewportSize({ width: 1920, height: 1080 });
+            // Logga in först
+            await this.loginToATG(page);
             const divisions = [];
             // Scrapa varje avdelning (1-7)
             for (let avd = 1; avd <= 7; avd++) {
@@ -665,7 +693,7 @@ class V75Scraper {
             ];
             const shoeSelectors = [
                 // ATG-specifika sko-selektorer
-                '.horse-fsow8y-ShoeCell-styles--shoeIcon',
+                ".horse-fsow8y-ShoeCell-styles--shoeIcon",
                 '[class*="ShoeCell"]',
                 '[class*="shoeIcon"]',
                 '[class*="shoe"]',

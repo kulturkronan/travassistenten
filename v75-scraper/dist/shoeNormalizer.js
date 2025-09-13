@@ -108,7 +108,9 @@ export async function extractShoeFromElement(element) {
         // 7. Försök hitta sko-ikoner i elementet
         try {
             // Kolla om det finns flera sko-ikoner (fram och bak)
-            const shoeIcons = await element.locator('svg, [class*="shoe"], [class*="icon"]').all();
+            const shoeIcons = await element
+                .locator('svg, [class*="shoe"], [class*="icon"]')
+                .all();
             if (shoeIcons.length >= 2) {
                 // Antag att det finns två ikoner - en för fram och en för bak
                 // Detta är en förenklad logik, i verkligheten skulle man behöva analysera ikonerna mer noggrant
@@ -117,7 +119,8 @@ export async function extractShoeFromElement(element) {
             else if (shoeIcons.length === 1) {
                 // En ikon - antingen barfota överallt eller skor överallt
                 const iconClass = await shoeIcons[0].getAttribute("class");
-                if (iconClass && (iconClass.includes("barefoot") || iconClass.includes("barfota"))) {
+                if (iconClass &&
+                    (iconClass.includes("barefoot") || iconClass.includes("barfota"))) {
                     return "c̶c̶";
                 }
                 else {

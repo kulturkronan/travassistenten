@@ -44,7 +44,7 @@ export default function LaromTab() {
     if (file && file.name.endsWith(".md")) {
       const fakeEvent = {
         target: { files: [file] },
-      } as React.ChangeEvent<HTMLInputElement>;
+      } as unknown as React.ChangeEvent<HTMLInputElement>;
       handleFileUpload(fakeEvent);
     }
   };
